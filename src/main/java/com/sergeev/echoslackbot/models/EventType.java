@@ -1,6 +1,6 @@
 package com.sergeev.echoslackbot.models;
 
-public class MentionEvent {
+public class EventType {
     private String type;
     private String user;
     private String text;

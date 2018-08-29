@@ -1,11 +1,20 @@
 package com.sergeev.echoslackbot.models;
 
-public class EventType {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.io.Serializable;
+
+public class EventData implements Serializable {
     private String type;
     private String user;
     private String text;
     private String ts;
     private String channel;
+
+    @JsonProperty("client_msg_id")
+    private String clientMsgId;
+
+    @JsonProperty("event_ts")
     private String eventTs;
 
     public String getType() {
@@ -46,6 +55,14 @@ public class EventType {
 
     public void setChannel(String channel) {
         this.channel = channel;
+    }
+
+    public String getClientMsgId() {
+        return clientMsgId;
+    }
+
+    public void setClientMsgId(String clientMsgId) {
+        this.clientMsgId = clientMsgId;
     }
 
     public String getEventTs() {

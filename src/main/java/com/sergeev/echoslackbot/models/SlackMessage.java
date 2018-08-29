@@ -1,15 +1,30 @@
 package com.sergeev.echoslackbot.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class SlackEvent {
+public class SlackMessage implements Serializable {
     public String token;
+
+    @JsonProperty("team_id")
     public String teamId;
+
+    @JsonProperty("api_app_id")
     public String apiAppId;
-    public EventType eventType;
+
+    public EventData event;
+
     public String type;
+
+    @JsonProperty("authed_users")
     public ArrayList<String> authedUsers;
+
+    @JsonProperty("event_id")
     public String eventId;
+
+    @JsonProperty("event_time")
     public long eventTime;
 
     public String getToken() {
@@ -36,12 +51,12 @@ public class SlackEvent {
         this.apiAppId = apiAppId;
     }
 
-    public EventType getEventType() {
-        return eventType;
+    public EventData getEvent() {
+        return event;
     }
 
-    public void setEventType(EventType eventType) {
-        this.eventType = eventType;
+    public void setEvent(EventData event) {
+        this.event = event;
     }
 
     public String getType() {

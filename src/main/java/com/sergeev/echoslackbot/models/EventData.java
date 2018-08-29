@@ -17,6 +17,9 @@ public class EventData implements Serializable {
     @JsonProperty("event_ts")
     private String eventTs;
 
+    @JsonProperty("bot_id")
+    private String botId;
+
     public String getType() {
         return type;
     }
@@ -71,5 +74,13 @@ public class EventData implements Serializable {
 
     public void setEventTs(String eventTs) {
         this.eventTs = eventTs;
+    }
+
+    public String getBotId() {
+        return botId;
+    }
+
+    public void setBotId(String botId) {
+        this.botId = botId;
     }
 }

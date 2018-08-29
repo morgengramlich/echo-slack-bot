@@ -1,7 +1,6 @@
 package com.sergeev.echoslackbot.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.io.Serializable;
 
 public class EventData implements Serializable {

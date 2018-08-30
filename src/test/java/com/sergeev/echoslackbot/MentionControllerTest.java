@@ -16,6 +16,8 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verifyZeroInteractions;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = MentionController.class, secure = false)
@@ -45,6 +47,7 @@ public class MentionControllerTest {
 
     @Test
     public void ignoreSelfMention() throws Exception {
+        ResponseService mockService = mock(ResponseService.class);
         RequestBuilder requestBuilder = MockMvcRequestBuilders
                 .post("/mention")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -52,6 +55,8 @@ public class MentionControllerTest {
 
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
         MockHttpServletResponse response = result.getResponse();
+
+        verifyZeroInteractions(mockService);
         assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
     }
 

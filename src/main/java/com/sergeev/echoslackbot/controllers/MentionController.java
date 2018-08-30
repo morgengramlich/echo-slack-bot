@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
-public class MentionEventController {
+public class MentionController {
 
     @Autowired
     ResponseService responseService;

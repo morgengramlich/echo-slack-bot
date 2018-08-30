@@ -18,7 +18,7 @@ public class MentionController {
     public String postMention(@RequestBody SlackMessage event) {
         if (event.getChallenge() != null) {
             return event.getChallenge();
-        } else if (event.getEvent().getBotId() == null) {
+        } else if (event.getEvent() != null && event.getEvent().getBotId() == null) {
             responseService.sendResponse(event);
         }
         return "";

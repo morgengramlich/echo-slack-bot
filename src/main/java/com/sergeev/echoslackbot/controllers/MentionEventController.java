@@ -17,11 +17,13 @@ public class MentionEventController {
     ResponseService responseService;
 
     @RequestMapping(value = "/mention", method = RequestMethod.POST, consumes="application/json")
-    @ResponseStatus(HttpStatus.OK)
-    public void postMention(@RequestBody SlackMessage event) {
-        if (event.getEvent().getBotId() == null) {
+    public String postMention(@RequestBody SlackMessage event) {
+        if (event.getChallenge() != null) {
+            return event.getChallenge();
+        } else if (event.getEvent().getBotId() == null) {
             responseService.sendResponse(event);
         }
+        return "";
     }
 
 }

@@ -6,16 +6,15 @@ import java.util.ArrayList;
 
 public class SlackMessage implements Serializable {
     public String token;
+    public EventData event;
+    public String type;
+    public String challenge;
 
     @JsonProperty("team_id")
     public String teamId;
 
     @JsonProperty("api_app_id")
     public String apiAppId;
-
-    public EventData event;
-
-    public String type;
 
     @JsonProperty("authed_users")
     public ArrayList<String> authedUsers;
@@ -88,5 +87,13 @@ public class SlackMessage implements Serializable {
 
     public void setEventTime(long eventTime) {
         this.eventTime = eventTime;
+    }
+
+    public String getChallenge() {
+        return challenge;
+    }
+
+    public void setChallenge(String challenge) {
+        this.challenge = challenge;
     }
 }
